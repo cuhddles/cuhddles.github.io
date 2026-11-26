@@ -66,6 +66,10 @@ form{max-width:540px}
 .msg{font-weight:900;margin:10px 0 0;min-height:1.5em}
 .msg.ok{color:#0d6b33}
 .fine{font-size:13px;color:var(--muted);margin:6px 0 0}
+.rare{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.rare li{background:var(--ink);color:var(--y);border-radius:999px;padding:6px 12px 5px;font:400 14px/1 "Luckiest Guy",sans-serif;letter-spacing:.04em}
+.rare li.hot{background:var(--red);color:#fff}
+@media(max-width:900px){.rare{justify-content:center}}
 /* gallery */
 .gal{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start}
 .main{position:relative;background:#fff;border:4px solid var(--ink);border-radius:24px;padding:10px;box-shadow:10px 10px 0 var(--ink)}
@@ -127,7 +131,7 @@ footer a{color:var(--y);font-weight:900;text-decoration:none;margin-left:14px}
 </style>
 </head>
 <body>
-<div class="ticker" aria-hidden="true"><div><span>DROP #1</span><span>★</span><span>500 NUMBERED PIDGES</span><span>★</span><span>PLUSHIES WIT ATTITUDE</span><span>★</span><span>WAITLIST GETS FIRST DIBS</span><span>★</span><span>CUH.</span><span>★</span><span>DROP #1</span><span>★</span><span>500 NUMBERED PIDGES</span><span>★</span><span>PLUSHIES WIT ATTITUDE</span></div></div>
+<div class="ticker" aria-hidden="true"><div><span>DROP #1</span><span>★</span><span>500 NUMBERED PIDGES</span><span>★</span><span>PLUSHIES WIT ATTITUDE</span><span>★</span><span>WAITLIST GETS FIRST DIBS</span><span>★</span><span>NO RESTOCKS</span><span>★</span><span>CUH.</span><span>★</span><span>DROP #1</span><span>★</span><span>500 NUMBERED PIDGES</span><span>★</span><span>PLUSHIES WIT ATTITUDE</span></div></div>
 
 <header class="g"><div class="wrap"><nav><a href="#top" class="wm" style="text-decoration:none" aria-label="CUHDDLES home">CUHDDLES</a><div class="links"><a href="#pidge">Meet Pidge</a><a href="#angles">Angles</a><a href="#drop">The drop</a><a href="#join" class="pill">Join the list</a></div></nav></div></header>
 
@@ -147,7 +151,8 @@ footer a{color:var(--y);font-weight:900;text-decoration:none;margin-left:14px}
     <div class="copy" id="join">
       <h2 style="display:none">Join the waitlist</h2>
       <p style="font:900 clamp(20px,2.2vw,26px)/1.2 Nunito,sans-serif;color:var(--ink);margin-bottom:6px">Meet Pidge. Hardest pigeon on the block.</p>
-      <p>Drop #1 is 500 numbered plushies. When they're gone, they're gone. Get on the list and you get the link before anyone else.</p>
+      <p>Drop #1 is 500 plushies, each one numbered 001 to 500. No restocks. When they're gone, they're gone. The list gets the link before anyone else.</p>
+      <ul class="rare" aria-label="Drop details"><li>500 made</li><li>Numbered 001-500</li><li class="hot">No restocks</li><li>List gets first access</li></ul>
       <form id="form" novalidate>
         <div class="row"><input id="email" name="email" type="email" autocomplete="email" placeholder="your@email.com" aria-label="Your email" required><button class="btn" id="go" type="submit">PUT ME ON</button></div>
         <input class="handle" id="handle" name="handle" type="text" placeholder="TikTok / IG @ (optional)" maxlength="40" autocomplete="off" aria-label="TikTok or Instagram handle, optional">
@@ -222,6 +227,7 @@ footer a{color:var(--y);font-weight:900;text-decoration:none;margin-left:14px}
       <details><summary>Does it actually say "cuh"?</summary><p>That's the plan. Final details go to the waitlist first.</p></details>
       <details><summary>How much will it cost?</summary><p>The waitlist hears the price first, before the public.</p></details>
       <details><summary>When does it drop?</summary><p>When the season wraps. The waitlist hears first.</p></details>
+      <details><summary>Will Pidge restock?</summary><p>No. Drop #1 is 500 numbered pieces and that's it. Miss it and you're waiting on whoever drops next.</p></details>
       <details><summary>Where do you ship?</summary><p>US first. More places if the list asks for it.</p></details>
       <details><summary>Is it for kids?</summary><p>It's a collectible for teens and grown-ups who get the joke. Full safety info comes with the product.</p></details>
       <details><summary>Where do I watch?</summary><p>Follow <a href="https://www.tiktok.com/@cuhddlesplush">@cuhddlesplush</a> on TikTok and <a href="https://www.instagram.com/cuhddlesplush">Instagram</a>.</p></details>
@@ -230,7 +236,7 @@ footer a{color:var(--y);font-weight:900;text-decoration:none;margin-left:14px}
 </section>
 
 <section class="final g">
-  <div class="wrap"><div class="wm">500 PIDGES.</div><p>that's it, cuh.</p><a class="btn" href="#join">GET ON THE LIST</a></div>
+  <div class="wrap"><div class="wm">500 PIDGES.</div><p>no restocks. that's it, cuh.</p><a class="btn" href="#join">GET ON THE LIST</a></div>
 </section>
 </main>
 
@@ -254,7 +260,7 @@ form.addEventListener('submit',async e=>{
   go.disabled=true;msg.textContent='Saving your spot...';
   try{
     await fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:new URLSearchParams({email,handle:form.handle.value.trim().slice(0,40),website:form.website.value,source:src.slice(0,60)})});
-    msg.className='msg ok';msg.textContent="You're on the list, cuh. Watch your inbox.";form.reset();
+    msg.className='msg ok';msg.textContent="You're on the list, cuh. You get the link before the public. Watch your inbox.";form.reset();
   }catch(err){msg.textContent="Couldn't save that. Check your connection and try again.";}
   go.disabled=false;
 });
