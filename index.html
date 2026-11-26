@@ -46,7 +46,7 @@ nav .links a{text-decoration:none}
 .copy h1{font:900 clamp(22px,2.3vw,28px)/1.2 Nunito,sans-serif;margin:0 0 8px;letter-spacing:-.01em}
 .copy p{margin:0 0 18px;max-width:34em;color:var(--muted)}
 .photo{grid-area:photo;position:relative;justify-self:center;width:100%;max-width:470px;margin-block:10px 40px}
-.photo .card{background:#fff;border:4px solid var(--ink);border-radius:26px;padding:10px;box-shadow:12px 12px 0 var(--ink);transform:rotate(2.5deg)}
+.photo .card{overflow:hidden;background:#fff;border:4px solid var(--ink);border-radius:26px;padding:10px;box-shadow:12px 12px 0 var(--ink);transform:rotate(2.5deg)}
 .photo img{display:block;width:100%;height:auto;border-radius:16px}
 .bubble{position:absolute;top:-26px;right:-10px;background:#fff;border:4px solid var(--ink);border-radius:18px;padding:4px 18px 2px;font:400 34px "Luckiest Guy",sans-serif;box-shadow:4px 4px 0 var(--ink);transform:rotate(7deg)}
 .bubble::after{content:"";position:absolute;left:22px;bottom:-16px;border:9px solid transparent;border-top:10px solid var(--ink)}
@@ -66,6 +66,18 @@ form{max-width:540px}
 .msg{font-weight:900;margin:10px 0 0;min-height:1.5em}
 .msg.ok{color:#0d6b33}
 .fine{font-size:13px;color:var(--muted);margin:6px 0 0}
+/* gallery */
+.gal{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start}
+.main{position:relative;background:#fff;border:4px solid var(--ink);border-radius:24px;padding:10px;box-shadow:10px 10px 0 var(--ink)}
+.main img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:14px}
+.main figcaption{position:absolute;left:22px;bottom:22px;background:var(--ink);color:var(--y);font:400 16px "Luckiest Guy",sans-serif;letter-spacing:.04em;padding:6px 12px;border-radius:999px}
+.thumbs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.thumbs button{padding:0;border:3px solid var(--ink);border-radius:16px;overflow:hidden;background:#fff;cursor:pointer;box-shadow:4px 4px 0 var(--ink);position:relative}
+.thumbs button[aria-pressed=true]{outline:4px solid var(--red);outline-offset:2px}
+.thumbs img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.thumbs span{position:absolute;left:6px;bottom:6px;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:1px 8px;font:800 12px Nunito,sans-serif}
+.note{margin:22px 0 0;font-size:14px;color:var(--muted)}
+.galtext p{color:var(--muted);margin:0 0 18px}
 /* pavement like the cover banner */
 .pave{height:70px;background:linear-gradient(#a7a39b,#77746e);border-top:4px solid var(--ink);position:relative;overflow:hidden}
 .pave::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 158px,rgba(0,0,0,.28) 158px 161px)}
@@ -79,7 +91,7 @@ h2{font:400 clamp(38px,5.5vw,64px)/1 "Luckiest Guy",sans-serif;margin:0 0 26px;l
 .tc{background:linear-gradient(160deg,#ffe95a,#ffc800);color:var(--ink);border:5px solid #fff;border-radius:24px;padding:14px;max-width:380px;justify-self:center;width:100%;box-shadow:0 0 0 5px var(--ink),14px 14px 0 5px #333;transform:rotate(-3deg)}
 .tc .top{display:flex;justify-content:space-between;align-items:center;font:400 22px "Luckiest Guy",sans-serif;margin-bottom:8px}
 .tc .top span{background:var(--ink);color:var(--y);border-radius:999px;padding:3px 10px;font-size:14px}
-.tc img{display:block;width:100%;border-radius:12px;border:3px solid var(--ink)}
+.tc img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px;border:3px solid var(--ink)}
 .stats{margin-top:10px;display:grid;gap:7px}
 .stat{display:grid;grid-template-columns:70px minmax(0,1fr) 38px;gap:8px;align-items:center;font:800 14px Nunito,sans-serif}
 .bar{height:12px;border:2px solid var(--ink);border-radius:999px;background:#fff;overflow:hidden}
@@ -109,7 +121,7 @@ footer{background:var(--ink);color:#bdb8a6;font-size:14px;padding-block:22px max
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
 footer .wm{font-size:22px;-webkit-text-stroke:.12em #000}
 footer a{color:var(--y);font-weight:900;text-decoration:none;margin-left:14px}
-@media(max-width:900px){.hgrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"logo" "photo" "copy"}.logo{text-align:center}.logo .tagline{margin-left:0}.swoosh{margin-left:19%}.photo{max-width:360px;margin-block:26px 30px}.copy{padding-top:0}.copy p,form{margin-inline:auto}.copy{text-align:center}.meet{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.faq{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:900px){.gal{grid-template-columns:minmax(0,1fr)}.hgrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"logo" "photo" "copy"}.logo{text-align:center}.logo .tagline{margin-left:0}.swoosh{margin-left:19%}.photo{max-width:360px;margin-block:26px 30px}.copy{padding-top:0}.copy p,form{margin-inline:auto}.copy{text-align:center}.meet{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.faq{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:560px){nav .links a:not(.pill){display:none}.row{flex-direction:column}.btn{width:100%}.photo{max-width:290px}.stamp{width:96px;height:96px;font-size:13px}.stamp b{font-size:28px}.bubble{font-size:26px}.lore ul{grid-template-columns:minmax(0,1fr)}.tc{max-width:300px;transform:rotate(-2deg)}.steps{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){.ticker div{animation:none;padding-left:16px}}
 </style>
@@ -117,7 +129,7 @@ footer a{color:var(--y);font-weight:900;text-decoration:none;margin-left:14px}
 <body>
 <div class="ticker" aria-hidden="true"><div><span>DROP #1</span><span>★</span><span>500 NUMBERED PIDGES</span><span>★</span><span>PLUSHIES WIT ATTITUDE</span><span>★</span><span>WAITLIST GETS FIRST DIBS</span><span>★</span><span>CUH.</span><span>★</span><span>DROP #1</span><span>★</span><span>500 NUMBERED PIDGES</span><span>★</span><span>PLUSHIES WIT ATTITUDE</span></div></div>
 
-<header class="g"><div class="wrap"><nav><a href="#top" class="wm" style="text-decoration:none" aria-label="CUHDDLES home">CUHDDLES</a><div class="links"><a href="#pidge">Meet Pidge</a><a href="#drop">The drop</a><a href="#join" class="pill">Join the list</a></div></nav></div></header>
+<header class="g"><div class="wrap"><nav><a href="#top" class="wm" style="text-decoration:none" aria-label="CUHDDLES home">CUHDDLES</a><div class="links"><a href="#pidge">Meet Pidge</a><a href="#angles">Angles</a><a href="#drop">The drop</a><a href="#join" class="pill">Join the list</a></div></nav></div></header>
 
 <main id="top">
 <section class="hero g" style="padding-bottom:0">
@@ -173,6 +185,23 @@ footer a{color:var(--y);font-weight:900;text-decoration:none;margin-left:14px}
   </div>
 </section>
 
+<section class="g" id="angles">
+  <div class="wrap gal">
+    <figure class="main" style="margin:0"><img id="big" src="pidge-full.jpg" width="640" height="640" alt="Pidge full body: bucket hat, black hoodie, gold chain, big plush feet"><figcaption id="cap">Full fit</figcaption></figure>
+    <div class="galtext">
+      <h2>Get a closer look</h2>
+      <p>Tap a photo to see it big. Soft fur, big attitude, even bigger feet.</p>
+      <div class="thumbs" id="thumbs">
+        <button type="button" aria-pressed="true" data-src="pidge-full.jpg" data-cap="Full fit"><img src="pidge-full.jpg" alt="Full body" loading="lazy"><span>Full fit</span></button>
+        <button type="button" aria-pressed="false" data-src="pidge.jpg" data-cap="The stare"><img src="pidge.jpg" alt="Face close-up" loading="lazy"><span>The stare</span></button>
+        <button type="button" aria-pressed="false" data-src="pidge-chain.jpg" data-cap="The ice"><img src="pidge-chain.jpg" alt="Gold chain and iced feather pendant" loading="lazy"><span>The ice</span></button>
+        <button type="button" aria-pressed="false" data-src="pidge-feet.jpg" data-cap="The feet"><img src="pidge-feet.jpg" alt="Big plush feet" loading="lazy"><span>The feet</span></button>
+      </div>
+      <p class="note">Concept renders. Side and back views, then real sample photos, land here before the drop.</p>
+    </div>
+  </div>
+</section>
+
 <section class="g" id="drop">
   <div class="wrap">
     <h2>How the drop works</h2>
@@ -212,6 +241,8 @@ const SHEET_URL = "";
 {
 const pave=document.getElementById('pave');let s=7;const r=()=>(s=s*16807%2147483647)/2147483647;
 for(let i=0;i<22;i++){const c=document.createElement('i');c.style.left=(r()*100)+'%';c.style.top=(15+r()*65)+'%';c.style.transform='rotate('+(r()*180)+'deg)';pave.appendChild(c);}
+const big=document.getElementById('big'),cap=document.getElementById('cap');
+document.getElementById('thumbs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;big.src=b.dataset.src;cap.textContent=b.dataset.cap;document.querySelectorAll('#thumbs button').forEach(x=>x.setAttribute('aria-pressed',x===b));});
 const form=document.getElementById('form'),msg=document.getElementById('msg'),go=document.getElementById('go');
 const src=new URLSearchParams(location.search).get('src')||document.referrer.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]||'direct';
 form.addEventListener('submit',async e=>{
